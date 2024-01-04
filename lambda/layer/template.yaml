@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: SLED dependencies
+
+Resources:
+  SledChromiumLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: SledChromiumLayer
+      Description: node_moudles folder with chromium dependencies installed
+      ContentUri: ./chromium-layer/
+      CompatibleRuntimes:
+        - nodejs12.x
+      RetentionPolicy: Retain
+
+  JestTaikoLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: JestTaikoLayer
+      Description: node_moudles folder with taiko and jest dependencies installed
+      ContentUri: ./taiko-jest-layer/
+      CompatibleRuntimes:
+        - nodejs12.x
+      RetentionPolicy: Retain
+  
+  ShopifyTestLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: ShopifyTestLayer
+      Description: node_moudles folder with shopify-node-api dependencies installed
+      ContentUri: ./shopify-test-layer/
+      CompatibleRuntimes:
+        - nodejs12.x
+      RetentionPolicy: Retain
+  
