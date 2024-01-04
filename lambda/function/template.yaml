@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Sled taiko jest chrome aws lambda
+Resources:
+  SledTaikoJestFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: ./general/
+      Description: Sled serverless taiko project uses taiko jest and chorme aws lambda
+      MemorySize: 824
+      Timeout: 60
+      Layers:
+        - arn:aws:lambda:us-east-1:<urin>:layer:SledChromiumLayer:1
+        - arn:aws:lambda:us-east-1:<urin>:layer:JestTaikoLayer:2
+
+  ShopifyTaikoJestFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs12.x
+      CodeUri: ./shopify/
+      Description: Sled serverless-taiko project uses taiko jest and chorme aws lambda
+      MemorySize: 824
+      Timeout: 240
+      Layers:
+        - arn:aws:lambda:us-east-1:<urin>:layer:SledChromiumLayer:1
+        - arn:aws:lambda:us-east-1:<urin>:layer:JestTaikoLayer:2
+        - arn:aws:lambda:us-east-1:<urin>:layer:ShopifyTestLayer:1
